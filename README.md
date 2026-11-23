@@ -4,7 +4,7 @@
 
 This project demonstrates a foundational AWS disaster recovery setup for a healthcare technology application. It focuses on secure application hosting, backup storage, and application recovery using AWS services.
 
-The primary environment is deployed in the **Asia Pacific (Sydney) region (`ap-southeast-2`)**.
+The primary environment is deployed in the Asia Pacific (Sydney) region (`ap-southeast-2`).
 
 ## Architecture
 
@@ -32,22 +32,26 @@ The implemented architecture includes:
 ## Implementation Details
 
 ### 1. Network Infrastructure
+
 - Created a custom VPC named `DR-Primary-VPC`.
 - Configured public and private subnets across two Availability Zones.
 - Configured an Internet Gateway and route tables.
-- Created separate security groups for the web server and database layer.
+- Created separate security groups for the web server and prepared database layer.
 
 ### 2. Application Deployment
+
 - Launched an Amazon Linux 2023 EC2 instance (`t3.micro`).
 - Deployed a Python Flask application.
 - Verified application accessibility through a web browser.
 
 ### 3. IAM Configuration
+
 - Created an EC2 IAM role named `DR-EC2-S3-Access-Role`.
 - Configured a custom policy named `DR-S3-Backup-Policy`.
 - Granted only the required S3 bucket listing, upload, and download permissions.
 
 ### 4. S3 Backup Configuration
+
 - Created an S3 bucket for application backups.
 - Enabled S3 Versioning.
 - Enabled Block Public Access.
@@ -55,15 +59,16 @@ The implemented architecture includes:
 - Uploaded the application backup ZIP file.
 
 ### 5. Backup Recovery Test
+
 The recovery process was successfully tested:
 
-1. Downloaded the application ZIP backup from S3.
-2. Extracted the backup into a separate recovery directory.
-3. Created a Python virtual environment.
-4. Installed application dependencies.
-5. Checked Python syntax.
-6. Started the recovered Flask application on port `5001`.
-7. Verified the application response using `curl`.
+- Downloaded the application ZIP backup from S3.
+- Extracted the backup into a separate recovery directory.
+- Created a Python virtual environment.
+- Installed application dependencies.
+- Checked Python syntax.
+- Started the recovered Flask application on port `5001`.
+- Verified the application response using `curl`.
 
 **Recovery test result:** Successful. The restored application returned the expected HTML response.
 
@@ -116,8 +121,8 @@ No actual cross-region failover or automated failover was performed.
 - Automate backup and recovery workflows.
 - Measure and validate RTO and RPO.
 
----
+## Project Status
 
-**Project Status:** Primary infrastructure and application backup/recovery demonstration completed. Cross-region disaster recovery remains planned.
+**Primary infrastructure and application backup/recovery demonstration completed. Cross-region disaster recovery remains planned.**
 
 **Region:** Asia Pacific (Sydney) — `ap-southeast-2`
